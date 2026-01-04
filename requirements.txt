@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-multipart
+httpx
+numpy
+pandas
+scikit-learn==1.6.1
+joblib
+requests
+motor
+python-jose[cryptography]
+passlib[bcrypt]
+email-validator
+bcrypt==4.0.1

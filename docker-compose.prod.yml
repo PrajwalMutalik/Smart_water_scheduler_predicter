@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URL=mongodb://mongo:27017
+      - DATABASE_NAME=smart_irrigation
+      - REDIS_URL=redis://redis:6379
+      - AWS_REGION=us-east-1
+    volumes:
+      - ./:/app
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+      - redis
+    restart: always
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017" # In prod, might want to expose only to internal network
+    volumes:
+      - mongo_data:/data/db
+    restart: always
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    restart: always
+  
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+      - "443:443" # For SSL if Nginx configured
+    depends_on:
+      - web
+    restart: always
+
+volumes:
+  mongo_data:
