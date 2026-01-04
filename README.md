@@ -112,3 +112,56 @@ The entire system is containerized for "One-Click Deploy".
 * **IoT Integration:** Replace Open-Meteo "Estimated" soil data with real **ESP32 Soil Moisture Sensors** reporting to MQTT.
 * **Automated Retraining:** Create a pipeline (`train_model.py`) that runs weekly, fetching the `history` collection to re-train the XGBoost model on **actual** farmer preferences, creating a personalized model per farm.
 * **Valve Control:** Connect the backend to Solenoid Valves for "One-Click Execution" (currently manual).
+---
+
+## 🏃‍♂️ How to Run
+
+### Prerequisites
+
+1.  **Git**: [Download](https://git-scm.com/downloads)
+2.  **Docker Desktop**: [Download](https://www.docker.com/products/docker-desktop/) (Windows/Mac) OR **Docker Engine** (Linux)
+
+### Windows Users 🪟
+
+- Install **Docker Desktop for Windows**.
+- **Recommended**: Go to Docker Settings -> General -> Check "Use the WSL 2 based engine".
+- Open **PowerShell** (Run as Administrator) or **Git Bash**.
+
+### Installation Steps
+
+1.  **Clone the Repository**
+
+    ```bash
+    git clone https://github.com/PrajwalMutalik/Smart_water_scheduler_predicter.git
+    cd Smart_water_scheduler_predicter
+    ```
+
+2.  **Configuration**
+
+    - Create a `.env` file in the root folder (same level as `docker-compose.yml`).
+    - Add the following line:
+
+    ```env
+    MONGO_URI=mongodb://mongo:27017/irrigation_db
+    ```
+
+3.  **Run the System**
+
+    ```bash
+    docker-compose up --build
+    ```
+
+    - _First time run may take a few minutes to build the images._
+
+4.  **Access the App**
+    - **Farmer Dashboard**: [http://localhost:5173](http://localhost:5173)
+    - **Backend API Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
+
+---
+
+## ❓ Troubleshooting
+
+- **"Docker is not running"**: Open Docker Desktop application and wait for the whale icon to stabilize.
+- **"Port already in use"**: Ensure no other service is using ports `5173`, `8000`, or `27017`.
+- **"System Offline" in Dashboard**: Check internet connection (required for Open-Meteo API). The system has a fallback mode but live data is preferred.
+
