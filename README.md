@@ -1,5 +1,12 @@
 # Smart Irrigation System - Technical Architecture
 <img width="1918" height="958" alt="image" src="https://github.com/user-attachments/assets/2d74cad7-975e-4b05-aff4-e5d965456667" />
+<img width="1918" height="958" alt="image" src="https://github.com/user-attachments/assets/5ca3b2ca-2480-465a-8e33-2084a6ae3b58" />
+<img width="1918" height="958" alt="image" src="https://github.com/user-attachments/assets/e14a8545-981b-4ea6-97d1-a319de7087e2" />
+<img width="1918" height="958" alt="image" src="https://github.com/user-attachments/assets/b5a8cdfc-90b6-4c01-ac3a-1e5e5fcd8ff9" />
+<img width="1918" height="958" alt="image" src="https://github.com/user-attachments/assets/0a207d02-ca3e-40e5-91bc-a59199c9add7" />
+
+
+
 
 ## 1. Project Workflow Overview
 The system operates on an **Acknowledgment-Driven Loop**. It does not automate irrigation blindly; instead, it acts as an intelligent advisor that learns from farmer actions.
